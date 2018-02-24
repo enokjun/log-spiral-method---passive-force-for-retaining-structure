@@ -23,3 +23,5 @@ Assumption and Limitations:
 (5) in drained condition, interface friction angle = (2/3)*(effective friction angle of soil) and wall adhesion is (2/3)*(effective cohesion intercept)
 
 (6) in undrained condition, wall adhesion is (2/3)*(undrained shear strength)
+
+(7) in undrained condition, the soil in backfill are assumed to be all saturated above and below the watertable. The water table level does not change.
