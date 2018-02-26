@@ -2,7 +2,6 @@ clear all
 close all
 clc
 
-tic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -218,17 +217,16 @@ if analysisMethod == 0
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         figure(1)
         hold on
-        plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-')
-        plot([-15,0],[0,0],'k-')
-        plot([0,60],[H,H],'k-')
+        plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-','linewidth',5)
         plot(ptO(1),ptO(2),'kx')
         plot(ptC(1),ptC(2),'ko')
-        plot([-15,30], [H-(-15)*tand(45-0.5*phi_eff), H-(30)*tand(45-0.5*phi_eff)], 'k--');
         plot(logSpiralPt(:,4),logSpiralPt(:,5),'g--')
+        plot([-15,30], [H-(-15)*tand(45-0.5*phi_eff), H-(30)*tand(45-0.5*phi_eff)], 'k--');
         xlim([-15,30])
-        xlabel('x coordiante')
-        ylabel('y coordiante')
+        xlabel('x coordiante [ft]')
+        ylabel('y coordiante [ft]')
         pbaspect([1 1 1])
+        
 	end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -275,19 +273,23 @@ if analysisMethod == 0
     plot(final_summaryData(1),final_summaryData(2),'rx')
     plot(final_summaryData(3),final_summaryData(4),'ro')
     plot(crit_logSpiralPt(:,4),crit_logSpiralPt(:,5),'r-')
-    
-    figure(2)
-    hold on
-    plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-')
     plot([-15,0],[0,0],'k-')
     plot([0,60],[H,H],'k-')
+    legend('wall','trial ptO','trial ptC','trial log spiral','45-(phi''/2) line')
+
+    figure(2)
+    hold on
+    plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-','linewidth',5)
     plot(final_summaryData(1),final_summaryData(2),'rx')
     plot(final_summaryData(3),final_summaryData(4),'ro')
     plot(crit_logSpiralPt(:,4),crit_logSpiralPt(:,5),'r-')
     plot([-15,30], [H-(-15)*tand(45-0.5*phi_eff), H-(30)*tand(45-0.5*phi_eff)], 'k--');
+    plot([-15,0],[0,0],'k-')
+    plot([0,60],[H,H],'k-')
+    legend('wall','crit. ptO','crit. ptC','crit. log spiral','45-(phi''/2) line')
     xlim([-15,30])
-    xlabel('x coordiante')
-    ylabel('y coordiante')
+    xlabel('x coordiante [ft]')
+    ylabel('y coordiante [ft]')
     pbaspect([1 1 1])
 
     figure(3)
@@ -295,8 +297,8 @@ if analysisMethod == 0
     plot(summaryData(:,1),summaryData(:,11),'k-')
     plot(final_summaryData(1),final_summaryData(16),'rx')
     legend('Pp','critical Pp')
-    xlabel('x coordiante')
-    ylabel('Pp')
+    xlabel('x coordiante [ft]')
+    ylabel('Pp [lbs]')
 %     xlim([-15,-10])
 
     % disp(final_summaryData)
@@ -305,7 +307,7 @@ if analysisMethod == 0
     disp('resultant passive force (earth and water) on the wall in drained condition:')
     disp(final_summaryData(16))
     disp('resultant moment about base of the wall due to resultant passive force (earth and water) on the wall in drained condition:')
-    disp(final_summaryData(18))
+    disp(final_summaryData(19))
 
 %% undrained analysis
 elseif analysisMethod == 1
@@ -430,17 +432,15 @@ elseif analysisMethod == 1
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         figure(1)
         hold on
-        plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-')
-        plot([-15,0],[0,0],'k-')
-        plot([0,60],[H,H],'k-')
+        plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-','linewidth',5)
         plot(ptO(1),ptO(2),'kx')
         plot(ptC(1),ptC(2),'ko')
-        plot([-15,30], [H-(-15), H-(30)], 'k--');
         plot(cirPt(:,3),cirPt(:,4),'g--')
+        plot([-15,30], [H-(-15), H-(30)], 'k--');
         xlim([-15,15])
         ylim([-5,30])
-        xlabel('x coordiante')
-        ylabel('y coordiante')
+        xlabel('x coordiante [ft]')
+        ylabel('y coordiante [ft]')
         pbaspect([1 1 1])
     end
 
@@ -487,20 +487,24 @@ elseif analysisMethod == 1
     plot(final_summaryData(1),final_summaryData(2),'rx')
     plot(final_summaryData(3),final_summaryData(4),'ro')
     plot(crit_cirPt(:,3),crit_cirPt(:,4),'r-')
-    
-    figure(2)
-    hold on
-    plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-')
     plot([-15,0],[0,0],'k-')
     plot([0,60],[H,H],'k-')
+    legend('wall','trial ptO','trial ptC','trial log spiral','45-(phi''/2) line')
+
+    figure(2)
+    hold on
+    plot([ptA(1),ptB(1)],[ptA(2),ptB(2)],'k-','linewidth',5)
     plot(final_summaryData(1),final_summaryData(2),'rx')
     plot(final_summaryData(3),final_summaryData(4),'ro')
     plot(crit_cirPt(:,3),crit_cirPt(:,4),'r-')
-    plot([-15,30], [H-(-15), H-(30)], 'k--');
+    plot([-15,30], [H-(-15), H-(30)], 'k--')
+    plot([-15,0],[0,0],'k-')
+    plot([0,60],[H,H],'k-')
+    legend('wall','crit. ptO','crit. ptC','crit. log spiral','45-(phi''/2) line')
     xlim([-15,15])
     ylim([-5,30])
-    xlabel('x coordiante')
-    ylabel('y coordiante')
+    xlabel('x coordiante [ft]')
+    ylabel('y coordiante [ft]')
     pbaspect([1 1 1])
 
     figure(3)
@@ -508,8 +512,8 @@ elseif analysisMethod == 1
     plot(summaryData(:,1),summaryData(:,10),'k-')
     plot(final_summaryData(1),final_summaryData(15),'rx')
     legend('Pp','critical Pp')
-    xlabel('x coordiante')
-    ylabel('Pp')
+    xlabel('x coordiante [ft]')
+    ylabel('Pp [lbs]')
 %     xlim([-7,-3])
 
 %     disp(final_summaryData)
@@ -537,4 +541,3 @@ elseif analysisMethod == 1
 end
 
 disp('done')
-toc
