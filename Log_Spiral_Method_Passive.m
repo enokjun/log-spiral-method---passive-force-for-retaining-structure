@@ -305,7 +305,7 @@ if analysisMethod == 0
     disp('critical horizontal distance of ptO from the wall in drained condition: (positive horizontal direction is toward right)')
     disp(final_summaryData(1))
     disp('resultant passive force (earth and water) on the wall in drained condition:')
-    disp(final_summaryData(16))
+    disp(final_summaryData(17))
     disp('resultant moment about base of the wall due to resultant passive force (earth and water) on the wall in drained condition:')
     disp(final_summaryData(19))
 
